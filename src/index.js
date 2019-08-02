@@ -6,12 +6,12 @@ import * as serviceWorker from './serviceWorker'
 import ErrorBoundary from './error'
 
 ReactDOM.render(
-    <ErrorBoundary> 
-    {( hasError ) => (
-        <App hasError={hasError}/>
+  <ErrorBoundary>
+    {(hasError) => (
+      <App hasError={hasError} />
     )}
-    </ErrorBoundary>, 
-    document.getElementById('root')
+  </ErrorBoundary>,
+  document.getElementById('root')
 )
 
 serviceWorker.unregister()
