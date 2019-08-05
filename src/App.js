@@ -7,8 +7,8 @@ import { Login } from './pages/login'
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <Route path='/' component={MainPage} exact/>
       <Route path='/login' component={Login}/>
+      <Route path='/' component={MainPage} />
     </Switch>
   </BrowserRouter>
 )
