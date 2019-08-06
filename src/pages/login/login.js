@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -17,10 +17,7 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 
-const login = () => {
-  const provider = new firebase.auth.GithubAuthProvider()
-  firebase.auth().signInWithRedirect(provider)
-}
+let logoutFunction = null
 
 function Login () {
   const [userInfo, setUserInfo] = useState({
@@ -39,11 +36,22 @@ function Login () {
     })
   }, [])
 
-  const logout = () => {
+  const login = useCallback(() => {
+    const provider = new firebase.auth.GithubAuthProvider()
+    firebase.auth().signInWithRedirect(provider)
+  }, [])
+
+  const logout = useCallback(() => {
     firebase.auth().signOut().then(() => {
       setUserInfo({ isUserLogedIn: false, user: null })
     })
+  }, [])
+
+  if (!logoutFunction) {
+    logoutFunction = logout
   }
+
+  console.log(logoutFunction === logout)
 
   return (
     <Container>
