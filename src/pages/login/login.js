@@ -39,7 +39,6 @@ class Login extends PureComponent {
 
   logout = () => {
     firebase.auth().signOut().then(() => {
-      console.log('deslogou')
       this.setState({ isUserLogedIn: false, user: null })
     })
   }
