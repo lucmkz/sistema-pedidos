@@ -1,14 +1,24 @@
-import React, { Fragment } from 'react'
-import { Button } from '@material-ui/core'
+import React from 'react'
+import styled from 'styled-components'
+import { Button, Grid } from '@material-ui/core'
 import { ReactComponent as Logo } from './logo-react-zzaria.svg'
 
 const Login = () => (
-  <Fragment>
-    <Logo />
-    <Button>
-      Entrar com GitHub
-    </Button>
-  </Fragment>
+  <Container>
+    <Grid container direction='column' alignItems='center' spacing={10}>
+      <Grid iten>
+        <Logo />
+      </Grid>
+
+      <Grid iten>
+        <Button>Entrar com GitHub</Button>
+      </Grid>
+    </Grid>
+  </Container>
 )
+
+const Container = styled.div`
+  padding: 80px
+`
 
 export default Login
