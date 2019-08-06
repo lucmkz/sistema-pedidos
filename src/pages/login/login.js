@@ -1,7 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import firebase from 'firebase/app'
 import { Button, Grid } from '@material-ui/core'
 import { ReactComponent as MainLogo } from './logo-react-zzaria.svg'
+
+var firebaseConfig = {
+  apiKey: 'AIzaSyCZ4fuGJyXh25M5NonyG2CvknO20S0FyfQ',
+  authDomain: 'reactzzaria-c030e.firebaseapp.com',
+  databaseURL: 'https://reactzzaria-c030e.firebaseio.com',
+  projectId: 'reactzzaria-c030e',
+  storageBucket: '',
+  messagingSenderId: '563457483452',
+  appId: '1:563457483452:web:2652f9d4e79d0922'
+}
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig)
 
 const Login = () => (
   <Container>
