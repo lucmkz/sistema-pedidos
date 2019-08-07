@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import {
   AppBar,
+  Grid,
   Toolbar as MaterialToolbar,
   IconButton,
   Typography,
@@ -25,29 +26,41 @@ const Main = () => {
   }
 
   return (
-    <AppBar>
-      <Toolbar>
-        <LogoContainer>
-          <Logo />
-        </LogoContainer>
+    <>
+      <AppBar>
+        <Toolbar>
+          <LogoContainer>
+            <Logo />
+          </LogoContainer>
 
-        <Typography color='inherit'>
-            Olá {userInfo.user.displayName.split(' ')[0]} =)
-        </Typography>
+          <Typography color='inherit'>
+              Olá {userInfo.user.displayName.split(' ')[0]} =)
+          </Typography>
 
-        <IconButton color='inherit' onClick={handleOpenMenu}>
-          <AccountCircle />
-        </IconButton>
+          <IconButton color='inherit' onClick={handleOpenMenu}>
+            <AccountCircle />
+          </IconButton>
 
-        <Menu
-          open={Boolean(anchorElement)}
-          onClose={handleClose}
-          anchorEl={anchorElement}
-        >
-          <MenuItem onClick={logout}>Sair</MenuItem>
-        </Menu>
-      </Toolbar>
-    </AppBar>
+          <Menu
+            open={Boolean(anchorElement)}
+            onClose={handleClose}
+            anchorEl={anchorElement}
+          >
+            <MenuItem onClick={logout}>Sair</MenuItem>
+          </Menu>
+        </Toolbar>
+      </AppBar>
+
+      <Content>
+        <Grid container>
+          <Grid item>
+            <Typography vairant='h4'>
+              O que vai ser hoje?
+            </Typography>
+          </Grid>
+        </Grid>
+      </Content>
+    </>
   )
 }
 
@@ -72,6 +85,10 @@ const Logo = styled(MainLogo)`
   & line {
     stroke: #fff;
   }
+`
+
+const Content = styled.main`
+padding: 100px 20px 20px;
 `
 
 export default Main
