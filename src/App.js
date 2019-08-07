@@ -1,5 +1,5 @@
-import React, { Suspense, lazy, useContext, useEffect } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React, { Suspense, lazy, useContext, useEffect, useState } from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import { LinearProgress } from '@material-ui/core'
 import firebase from './services/firebase'
 import { AuthContext } from './contexts/auth'
@@ -7,8 +7,11 @@ import { AuthContext } from './contexts/auth'
 const MainPage = lazy(() => import('./pages/main'))
 const Login = lazy(() => import('./pages/login'))
 
-function App () {
-  const { setUserInfo } = useContext(AuthContext)
+function App ({ location }) {
+  const { userInfo, setUserInfo, logout } = useContext(AuthContext)
+  const [didCheckUserIn, setDidCheckUserIn] = useState(false)
+
+  const { isUserLogedIn } = userInfo
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -17,8 +20,22 @@ function App () {
         isUserLogedIn: !!user,
         user
       })
+      setDidCheckUserIn(true)
     })
+    window.logout = logout
   }, [])
+
+  if (!didCheckUserIn) {
+    return <LinearProgress />
+  }
+
+  if (isUserLogedIn && location.pathname === '/login') {
+    return <Redirect to='/' />
+  }
+
+  if (!isUserLogedIn && location.pathname !== '/login') {
+    return <Redirect to='/login' />
+  }
 
   return (
     <Suspense fallback={<LinearProgress />}>
