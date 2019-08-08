@@ -16,6 +16,7 @@ import { ReactComponent as MainLogo } from '../../images/logo-react-zzaria.svg'
 const Main = () => {
   const [anchorElement, setAnchorElement] = useState(null)
   const { userInfo, logout } = useContext(AuthContext)
+  const userName = userInfo.user.displayName.split(' ')[0]
 
   const handleOpenMenu = (e) => {
     setAnchorElement(e.target)
@@ -34,7 +35,7 @@ const Main = () => {
           </LogoContainer>
 
           <Typography color='inherit'>
-              Olá {userInfo.user.displayName.split(' ')[0]} =)
+              Olá {userName} =)
           </Typography>
 
           <IconButton color='inherit' onClick={handleOpenMenu}>
@@ -52,10 +53,10 @@ const Main = () => {
       </AppBar>
 
       <Content>
-        <Grid container>
+        <Grid container justify='center' >
           <Grid item>
-            <Typography vairant='h4'>
-              O que vai ser hoje?
+            <Typography variant='h3'>
+              O que vai ser hoje {userName}?
             </Typography>
           </Grid>
         </Grid>
@@ -88,7 +89,8 @@ const Logo = styled(MainLogo)`
 `
 
 const Content = styled.main`
-padding: 100px 20px 20px;
+  padding: 100px 20px 20px;
+  padding: 100px 20px 20px;
 `
 
 export default Main
