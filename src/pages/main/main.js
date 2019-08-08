@@ -7,7 +7,8 @@ import {
   IconButton,
   Typography,
   Menu,
-  MenuItem
+  MenuItem,
+  withStyles
 } from '@material-ui/core'
 import { AuthContext } from '../../contexts/auth'
 import { AccountCircle } from '@material-ui/icons'
@@ -52,6 +53,8 @@ const Main = () => {
         </Toolbar>
       </AppBar>
 
+      <Spacer />
+
       <Content>
         <Grid container justify='center' >
           <Grid item>
@@ -89,8 +92,18 @@ const Logo = styled(MainLogo)`
 `
 
 const Content = styled.main`
-  padding: 100px 20px 20px;
-  padding: 100px 20px 20px;
+  padding: 20px;
+  padding: 20px;
 `
+const style = (theme) => {
+  return {
+    main: theme.mixins.toolbar
+  }
+}
+const spacerWraper = ({ classes }) => (
+  <div className={classes.main} />
+)
+
+const Spacer = withStyles(style)(spacerWraper)
 
 export default Main
