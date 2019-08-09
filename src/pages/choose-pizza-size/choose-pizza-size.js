@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core'
 import { AuthContext } from 'contexts/auth'
 import pizzaSizes from 'fake-data/piza-size'
+import { CHOOSE_PIZZA_FLAVOURS } from 'routes'
 
 const ChoosePizzaSize = () => {
   const { userInfo } = useContext(AuthContext)
@@ -31,7 +32,7 @@ const ChoosePizzaSize = () => {
           <Grid item key={pizza.id} xs>
             <Card>
               <CardActionArea to={{
-                pathname: '/choose-pizza-flavours',
+                pathname: CHOOSE_PIZZA_FLAVOURS,
                 state: pizza
               }}>
                 <Pizza>
