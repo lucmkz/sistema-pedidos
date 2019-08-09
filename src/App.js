@@ -8,7 +8,7 @@ const MainPage = lazy(() => import('./pages/main'))
 const Login = lazy(() => import('./pages/login'))
 
 function App ({ location }) {
-  const { userInfo, setUserInfo, logout } = useContext(AuthContext)
+  const { userInfo, setUserInfo } = useContext(AuthContext)
   const [didCheckUserIn, setDidCheckUserIn] = useState(false)
 
   const { isUserLogedIn } = userInfo
@@ -25,7 +25,6 @@ function App ({ location }) {
       })
       setDidCheckUserIn(true)
     })
-    window.logout = logout
   }, [])
 
   if (!didCheckUserIn) {

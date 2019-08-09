@@ -9,8 +9,8 @@ import {
   MenuItem
 } from '@material-ui/core'
 import { AccountCircle } from '@material-ui/icons'
-import { AuthContext } from '../../contexts/auth'
-import { ReactComponent as MainLogo } from '../../images/logo-react-zzaria.svg'
+import { AuthContext } from 'contexts/auth'
+import { ReactComponent as MainLogo } from 'images/logo-react-zzaria.svg'
 
 const Header = () => {
   const [anchorElement, setAnchorElement] = useState(null)

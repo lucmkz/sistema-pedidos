@@ -6,8 +6,8 @@ import {
   Typography,
   Paper
 } from '@material-ui/core'
-import { AuthContext } from '../../contexts/auth'
-import pizzaSizes from '../../fake-data/piza-size'
+import { AuthContext } from 'contexts/auth'
+import pizzaSizes from 'fake-data/piza-size'
 
 const ChoosePizzaSize = () => {
   const { userInfo } = useContext(AuthContext)
