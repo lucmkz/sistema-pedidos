@@ -2,6 +2,7 @@
   "name": "sistema-pedidos",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://moonkzin.github.io/sistema-pedidos",
   "dependencies": {
     "@material-ui/core": "4.3.1",
     "@material-ui/icons": "4.2.1",
@@ -17,7 +18,8 @@
     "build": "rescripts build",
     "test": "rescripts test",
     "eject": "react-scripts eject",
-    "lint:fix": "standard --fix"
+    "lint:fix": "standard --fix",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +52,7 @@
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-standard": "4.0.0",
+    "gh-pages": "2.1.1",
     "react-hot-loader": "4.12.10",
     "standard": "13.1.0"
   }
