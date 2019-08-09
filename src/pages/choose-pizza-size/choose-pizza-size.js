@@ -7,6 +7,7 @@ import {
   Paper
 } from '@material-ui/core'
 import { AuthContext } from '../../contexts/auth'
+import pizzaSizes from '../../fake-data/piza-size'
 
 const ChoosePizzaSize = () => {
   const { userInfo } = useContext(AuthContext)
@@ -50,30 +51,6 @@ const ChoosePizzaSize = () => {
 function singularOrPlural (amount, singular, plural) {
   return amount === 1 ? singular : plural
 }
-
-const pizzaSizes = [
-  {
-    id: 0,
-    name: 'Pequena',
-    size: 28,
-    slices: 2,
-    flavours: 1
-  },
-  {
-    id: 1,
-    name: 'Média',
-    size: 30,
-    slices: 6,
-    flavours: 2
-  },
-  {
-    id: 2,
-    name: 'Média',
-    size: 32,
-    slices: 8,
-    flavours: 2
-  }
-]
 
 const Divider = styled(MaterialDevider)`
   margin: 20px 0;

@@ -9,9 +9,9 @@ const ChoosePizzaSize = React.lazy(() => import('../choose-pizza-size'))
 const Main = () => {
   return (
     <>
-    <Header />
+      <Header />
 
-    <Spacer />
+      <Spacer />
 
       <Content>
         <Suspense fallback='loading'>
