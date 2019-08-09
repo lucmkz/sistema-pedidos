@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {
   AppBar,
   Grid,
+  Divider as MaterialDevider,
   Toolbar as MaterialToolbar,
   IconButton,
   Typography,
@@ -58,11 +59,11 @@ const Main = () => {
 
       <Content>
         <Grid container direction='column' alignItems='center'>
-          <Typography variant='h3'>
+          <Typography variant='h3' gutterBottom>
             O que vai ser hoje {userName}?
           </Typography>
 
-          <Typography variant='h4'>
+          <Typography variant='h4' gutterBottom>
             Escolha o tamanho da pizza:
           </Typography>
         </Grid>
@@ -70,14 +71,17 @@ const Main = () => {
         <Grid container spacing={4}>
           {pizzaSizes.map((pizza) => (
             <Grid item key={pizza.id} xs={4}>
-              <Paper>
+              <PaperPizza>
                 <div>{pizza.size}cm</div>
-                <Typography>{pizza.name}</Typography>
+
+                <Divider />
+
+                <Typography variant='h5'>{pizza.name}</Typography>
                 <Typography>
                   {pizza.slices} fatias,
                   {pizza.flavours} sabores
                 </Typography>
-              </Paper>
+              </PaperPizza>
             </Grid>
           ))}
         </Grid>
@@ -109,6 +113,17 @@ const pizzaSizes = [
     flavours: 2
   }
 ]
+
+const Divider = styled(MaterialDevider)`
+  margin: 20px 0;
+  width: 100%;
+`
+const PaperPizza = styled(Paper)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding 20px 0;
+`
 
 const Toolbar = styled(MaterialToolbar)`
   margin: 0 auto;
