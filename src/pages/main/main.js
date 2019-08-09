@@ -59,18 +59,18 @@ const Main = () => {
 
       <Content>
         <Grid container direction='column' alignItems='center'>
-          <Typography variant='h3' gutterBottom>
+          <Title variant='h3'>
             O que vai ser hoje {userName}?
-          </Typography>
+          </Title>
 
-          <Typography variant='h4' gutterBottom>
+          <Title variant='h4'>
             Escolha o tamanho da pizza:
-          </Typography>
+          </Title>
         </Grid>
 
-        <Grid container spacing={4}>
+        <PizzasGrid>
           {pizzaSizes.map((pizza) => (
-            <Grid item key={pizza.id} xs={4}>
+            <Grid item key={pizza.id} xs>
               <PaperPizza>
                 <Pizza>
                   <PizzaText>{pizza.size}cm</PizzaText>
@@ -80,13 +80,12 @@ const Main = () => {
 
                 <Typography variant='h5'>{pizza.name}</Typography>
                 <Typography>
-                  {pizza.slices} fatias,
-                  {pizza.flavours} sabores
+                  {pizza.slices} fatias, {pizza.flavours} sabores
                 </Typography>
               </PaperPizza>
             </Grid>
           ))}
-        </Grid>
+        </PizzasGrid>
       </Content>
     </>
   )
@@ -120,11 +119,25 @@ const Divider = styled(MaterialDevider)`
   margin: 20px 0;
   width: 100%;
 `
+
+const Title = styled(Typography).attrs({
+  gutterBottom: true,
+  align: 'center'
+})``
+
+const PizzasGrid = styled(Grid).attrs({
+  container: true,
+  spacing: 4
+})`
+  padding: 20px;
+`
+
 const PaperPizza = styled(Paper)`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding 20px 0;
+  min- width 250px;
 `
 
 const Pizza = styled.div`
