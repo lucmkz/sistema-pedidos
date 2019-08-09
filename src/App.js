@@ -18,7 +18,10 @@ function App ({ location }) {
       console.log(user)
       setUserInfo({
         isUserLogedIn: !!user,
-        user
+        user: user && {
+          ...user,
+          firstName: user.displayName.split(' ')[0]
+        }
       })
       setDidCheckUserIn(true)
     })
