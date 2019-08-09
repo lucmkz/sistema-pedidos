@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import {
   Grid,
   Divider as MaterialDevider,
   Typography,
-  Paper
+  Card,
+  CardActionArea as MaterialCardActionArea
 } from '@material-ui/core'
 import { AuthContext } from 'contexts/auth'
 import pizzaSizes from 'fake-data/piza-size'
@@ -27,20 +29,22 @@ const ChoosePizzaSize = () => {
       <PizzasGrid>
         {pizzaSizes.map((pizza) => (
           <Grid item key={pizza.id} xs>
-            <PaperPizza>
-              <Pizza>
-                <PizzaText>{pizza.size}cm</PizzaText>
-              </Pizza>
+            <Card>
+              <CardActionArea to='/choose-pizza-flavours'>
+                <Pizza>
+                  <PizzaText>{pizza.size}cm</PizzaText>
+                </Pizza>
 
-              <Divider />
+                <Divider />
 
-              <Typography variant='h5'>{pizza.name}</Typography>
-              <Typography>
-                {pizza.slices} fatias, {' '}
-                {pizza.flavours}
-                {singularOrPlural(pizza.flavours, ' sabor', ' sabores')}
-              </Typography>
-            </PaperPizza>
+                <Typography variant='h5'>{pizza.name}</Typography>
+                <Typography>
+                  {pizza.slices} fatias, {' '}
+                  {pizza.flavours}
+                  {singularOrPlural(pizza.flavours, ' sabor', ' sabores')}
+                </Typography>
+              </CardActionArea>
+            </Card>
           </Grid>
         ))}
       </PizzasGrid>
@@ -69,7 +73,9 @@ const PizzasGrid = styled(Grid).attrs({
   padding: 20px;
 `
 
-const PaperPizza = styled(Paper)`
+const CardActionArea = styled(MaterialCardActionArea).attrs({
+  component: Link
+})`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,12 +86,14 @@ const PaperPizza = styled(Paper)`
 const Pizza = styled.div`
   height: 200px;
   width: 200px;
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 50%;
   position: relative;
+  z-index: 1;
 
   &::before,
   &::after {
