@@ -1,9 +1,24 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
+import { H4, HeaderContent } from 'ui'
+import { singularOrPlural } from 'utils'
+import { HOME } from 'routes'
 
 const ChoosePizzaFlavours = ({ location }) => {
-  console.log(location)
+  if (!location.state) {
+    return <Redirect to={HOME } />
+  }
+
+  const { flavours } = location.state
   return (
-    <h1>paaaa</h1>
+    <>
+      <HeaderContent>
+        <H4>
+          Escolha até {flavours} {' '}
+          {singularOrPlural(flavours, 'sabor', 'sabores')}
+        </H4>
+      </HeaderContent>
+    </>
   )
 }
 
