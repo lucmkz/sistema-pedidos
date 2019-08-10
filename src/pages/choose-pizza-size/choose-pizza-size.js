@@ -1,18 +1,22 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
+import pizzaSizes from 'fake-data/piza-size'
+import { singularOrPlural } from 'utils'
 import { Link } from 'react-router-dom'
+import { AuthContext } from 'contexts/auth'
+import { CHOOSE_PIZZA_FLAVOURS } from 'routes'
+import {
+  Divider,
+  H3,
+  H4,
+  PizzasGrid
+} from 'ui'
 import {
   Grid,
-  Divider as MaterialDevider,
   Typography,
   Card,
   CardActionArea as MaterialCardActionArea
 } from '@material-ui/core'
-import { singularOrPlural } from 'utils'
-import { H3, H4 } from 'ui'
-import { AuthContext } from 'contexts/auth'
-import pizzaSizes from 'fake-data/piza-size'
-import { CHOOSE_PIZZA_FLAVOURS } from 'routes'
 
 const ChoosePizzaSize = () => {
   const { userInfo } = useContext(AuthContext)
@@ -57,18 +61,6 @@ const ChoosePizzaSize = () => {
     </>
   )
 }
-
-const Divider = styled(MaterialDevider)`
-  margin: 20px 0;
-  width: 100%;
-`
-
-const PizzasGrid = styled(Grid).attrs({
-  container: true,
-  spacing: 4
-})`
-  padding: 20px;
-`
 
 const CardActionArea = styled(MaterialCardActionArea).attrs({
   component: Link

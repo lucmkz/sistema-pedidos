@@ -4,9 +4,9 @@ export default [
     image: '/fake-data/images/pizza-frango.jpeg',
     name: 'Frango',
     values: {
-      '0': 20,
-      '1': 30,
-      '2': 40
+      0: 20,
+      1: 30,
+      2: 40
     }
   },
   {
@@ -14,9 +14,9 @@ export default [
     image: '/fake-data/images/pizza-milho.jpeg',
     name: 'Milho',
     values: {
-      '0': 25,
-      '1': 35,
-      '2': 45
+      0: 25,
+      1: 35,
+      2: 45
     }
   },
   {
@@ -24,9 +24,9 @@ export default [
     image: '/fake-data/images/pizza-portuguesa.jpg',
     name: 'Frango',
     values: {
-      '0': 28,
-      '1': 38,
-      '2': 48
+      0: 28,
+      1: 38,
+      2: 48
     }
   }
 ]

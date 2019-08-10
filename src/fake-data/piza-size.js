@@ -15,7 +15,7 @@ export default [
   },
   {
     id: 2,
-    name: 'Média',
+    name: 'Grande',
     size: 32,
     slices: 8,
     flavours: 2
