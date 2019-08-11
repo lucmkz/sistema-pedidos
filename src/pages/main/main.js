@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import styled from 'styled-components'
 import { Switch, Route } from 'react-router-dom'
-import { withStyles } from '@material-ui/core'
+import { withStyles, LinearProgress } from '@material-ui/core'
 import Header from './header'
 import { HOME, CHOOSE_PIZZA_FLAVOURS } from 'routes'
 
@@ -16,7 +16,7 @@ const Main = () => {
       <Spacer />
 
       <Content>
-        <Suspense fallback='loading'>
+        <Suspense fallback={<LinearProgress />}>
           <Switch>
             <Route path={HOME} exact component={ChoosePizzaSize}/>
             <Route path={CHOOSE_PIZZA_FLAVOURS} component={ChoosePizzaFlavours}/>
