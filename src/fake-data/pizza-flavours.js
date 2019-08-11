@@ -1,7 +1,7 @@
 export default [
   {
     id: 0,
-    image: '/fake-data/images/pizza-frango.jpeg',
+    image: 'fake-data/images/pizza-frango.jpeg',
     name: 'Frango',
     values: {
       0: 20,
@@ -11,7 +11,7 @@ export default [
   },
   {
     id: 1,
-    image: '/fake-data/images/pizza-milho.jpeg',
+    image: 'fake-data/images/pizza-milho.jpeg',
     name: 'Milho',
     values: {
       0: 25,
@@ -21,7 +21,7 @@ export default [
   },
   {
     id: 2,
-    image: '/fake-data/images/pizza-portuguesa.jpg',
+    image: 'fake-data/images/pizza-portuguesa.jpg',
     name: 'Frango',
     values: {
       0: 28,
