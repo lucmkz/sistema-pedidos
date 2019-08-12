@@ -11,6 +11,7 @@ import {
   Typography
 } from '@material-ui/core'
 import {
+  CardLink,
   H4,
   HeaderContent,
   PizzasGrid
@@ -35,12 +36,15 @@ const ChoosePizzaFlavours = ({ location }) => {
         {pizzaFlavours.map((pizza) => (
           <Grid item key={pizza.id} xs>
             <Card>
-              <Img src={pizza.image} alt={pizza.name}/>
+              <Label>
+                <input type='checkbox'/>
+                <Img src={pizza.image} alt={pizza.name}/>
 
-              <Divider />
+                <Divider />
 
-              <Typography>{pizza.name}</Typography>
-              <Typography variant='h5'>{pizza.values[id]}</Typography>
+                <Typography>{pizza.name}</Typography>
+                <Typography variant='h5'>{pizza.values[id]}</Typography>
+              </Label>
             </Card>
           </Grid>
         ))}
@@ -48,6 +52,10 @@ const ChoosePizzaFlavours = ({ location }) => {
     </>
   )
 }
+
+const Label = styled(CardLink).attrs({
+  component: 'label'
+})``
 
 const Img = styled.img`
   width: 200px;
