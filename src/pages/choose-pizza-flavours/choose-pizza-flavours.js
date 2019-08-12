@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { singularOrPlural } from 'utils'
 import { HOME } from 'routes'
@@ -18,11 +18,25 @@ import {
 } from 'ui'
 
 const ChoosePizzaFlavours = ({ location }) => {
+  const [checkboxes, setCheckboxes] = useState(() => ({}))
+
   if (!location.state) {
     return <Redirect to={HOME } />
   }
 
   const { flavours, id } = location.state
+
+  const handleChangeCheckbox = (pizzaId) => (e) => {
+    setCheckboxes((checkboxes) => {
+      return {
+        ...checkboxes,
+        [pizzaId]: !checkboxes[pizzaId]
+      }
+    })
+  }
+
+  console.log(checkboxes)
+
   return (
     <>
       <HeaderContent>
@@ -37,7 +51,11 @@ const ChoosePizzaFlavours = ({ location }) => {
           <Grid item key={pizza.id} xs>
             <Card>
               <Label>
-                <input type='checkbox'/>
+                <input
+                  type='checkbox'
+                  checked={!!checkboxes[pizza.id]}
+                  onChange={handleChangeCheckbox(pizza.id)}
+                />
                 <Img src={pizza.image} alt={pizza.name}/>
 
                 <Divider />
