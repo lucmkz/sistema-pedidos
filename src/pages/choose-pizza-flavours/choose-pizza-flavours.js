@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { AuthContext } from 'contexts/auth'
 import { Redirect } from 'react-router-dom'
 import { HOME } from 'routes'
 import styled from 'styled-components'
@@ -24,12 +25,13 @@ import {
 
 const ChoosePizzaFlavours = ({ location }) => {
   const [checkboxes, setCheckboxes] = useState(() => ({}))
+  const { userInfo } = useContext(AuthContext)
 
   if (!location.state) {
     return <Redirect to={HOME} />
   }
 
-  const { flavours, id } = location.state
+  const { flavours, id, name, slices } = location.state
 
   const handleChangeCheckbox = (pizzaId) => (e) => {
     if (
@@ -78,7 +80,22 @@ const ChoosePizzaFlavours = ({ location }) => {
 
       <Footer>
         <Container>
-          Conteúdo
+          <Grid container>
+            <OrderContainer>
+              <Typography>
+                <b>{userInfo.user.firstName}, seu pedido é</b>
+              </Typography>
+              <Typography>
+                Pizza <b>{name.toUpperCase()}</b> {'- '}
+                ({slices} {singularOrPlural(slices, 'fatia', 'fatias')}, {' '}
+                {flavours} {singularOrPlural(flavours, 'sabor', 'sabores')})
+              </Typography>
+            </OrderContainer>
+
+            <Grid item>
+              Botões
+            </Grid>
+          </Grid>
         </Container>
       </Footer>
 
@@ -116,6 +133,14 @@ const Footer = styled.footer`
   box-shadow: 0 0 3px ${({ theme }) => theme.palette.grey[400]};
   padding: ${({ theme }) => theme.spacing(3)}px;
   width: 100%;
+`
+
+const OrderContainer = styled(Grid).attrs({
+  item: true
+})`
+  &&{
+    flex-grow: 1;
+  }
 `
 
 export default ChoosePizzaFlavours
