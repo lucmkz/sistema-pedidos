@@ -5,9 +5,11 @@ import styled from 'styled-components'
 const CardLink = styled(CardActionArea).attrs({
   component: Link
 })`
-display: flex;
-flex-direction: column;
-padding: ${({ theme }) => theme.spacing(3, 0)};
+  && {
+    display: flex;
+    flex-direction: column;
+    padding: ${({ theme }) => theme.spacing(3, 0)};
+  }
 `
 // min-width: 250px;
 

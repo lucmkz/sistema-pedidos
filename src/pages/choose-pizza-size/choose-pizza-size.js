@@ -96,15 +96,17 @@ const Pizza = styled.div`
 const PizzaText = styled(Typography).attrs({
   variant: 'h5'
 })`
-  border-radius: 50%;
-  height: 80px;
-  width: 80px;
-  background: ${({ theme }) => theme.palette.common.white};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 1;
+  &&{
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    background: ${({ theme }) => theme.palette.common.white};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
 `
 
 export default ChoosePizzaSize

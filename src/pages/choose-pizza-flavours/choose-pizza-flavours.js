@@ -101,8 +101,10 @@ const Checkbox = styled.input.attrs({
 `
 
 const Card = styled(MaterialCard)`
-  border: 2px solid transparent;
-  border-color: ${({ theme, checked }) => checked ? theme.palette.secondary.light : ''}
+  &&{
+    border: 2px solid transparent;
+    border-color: ${({ theme, checked }) => checked ? theme.palette.secondary.light : ''}
+  }
 `
 
 const Img = styled.img`
