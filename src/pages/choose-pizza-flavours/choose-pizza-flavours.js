@@ -7,7 +7,7 @@ import pizzaFlavours from 'fake-data/pizza-flavours'
 import {
   Divider,
   Grid,
-  Card,
+  Card as MaterialCard,
   Typography
 } from '@material-ui/core'
 import {
@@ -51,10 +51,9 @@ const ChoosePizzaFlavours = ({ location }) => {
       <PizzasGrid>
         {pizzaFlavours.map((pizza) => (
           <Grid item key={pizza.id} xs>
-            <Card>
+            <Card checked={!!checkboxes[pizza.id]}>
               <Label>
-                <input
-                  type='checkbox'
+                <Checkbox
                   checked={!!checkboxes[pizza.id]}
                   onChange={handleChangeCheckbox(pizza.id)}
                 />
@@ -80,6 +79,17 @@ function checkboxCheckeds (checkbox) {
 const Label = styled(CardLink).attrs({
   component: 'label'
 })``
+
+const Checkbox = styled.input.attrs({
+  type: 'checkbox'
+})`
+  display: none;
+`
+
+const Card = styled(MaterialCard)`
+  border: 2px solid transparent;
+  border-color: ${({ checked }) => checked ? '#000' : ''}
+`
 
 const Img = styled.img`
   width: 200px;
