@@ -27,15 +27,17 @@ const ChoosePizzaFlavours = ({ location }) => {
   const { flavours, id } = location.state
 
   const handleChangeCheckbox = (pizzaId) => (e) => {
+    if (
+      checkboxCheckeds(checkboxes).length === flavours && e.target.checked === true) {
+      return
+    }
     setCheckboxes((checkboxes) => {
       return {
         ...checkboxes,
-        [pizzaId]: !checkboxes[pizzaId]
+        [pizzaId]: e.target.checked
       }
     })
   }
-
-  console.log(checkboxes)
 
   return (
     <>
@@ -69,6 +71,10 @@ const ChoosePizzaFlavours = ({ location }) => {
       </PizzasGrid>
     </>
   )
+}
+
+function checkboxCheckeds (checkbox) {
+  return Object.values(checkbox).filter(Boolean)
 }
 
 const Label = styled(CardLink).attrs({

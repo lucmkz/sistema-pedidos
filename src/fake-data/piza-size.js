@@ -18,6 +18,6 @@ export default [
     name: 'Grande',
     size: 32,
     slices: 8,
-    flavours: 2
+    flavours: 3
   }
 ]
