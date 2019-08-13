@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { AuthContext } from 'contexts/auth'
-import { Redirect } from 'react-router-dom'
-import { HOME } from 'routes'
+import { Link, Redirect } from 'react-router-dom'
+import { HOME, CHOOSE_PIZZA_QUANTITY } from 'routes'
 import styled from 'styled-components'
 import pizzaFlavours from 'fake-data/pizza-flavours'
 import {
@@ -9,6 +9,7 @@ import {
   toMoney
 } from 'utils'
 import {
+  Button as MaterialButton,
   Container,
   Divider,
   Grid,
@@ -93,7 +94,8 @@ const ChoosePizzaFlavours = ({ location }) => {
             </OrderContainer>
 
             <Grid item>
-              Botões
+              <Button to={HOME} >Mudar Tamanho</Button>
+              <Button to={CHOOSE_PIZZA_QUANTITY} color='primary'>Quantidade de Pizzas </Button>
             </Grid>
           </Grid>
         </Container>
@@ -140,6 +142,15 @@ const OrderContainer = styled(Grid).attrs({
 })`
   &&{
     flex-grow: 1;
+  }
+`
+
+const Button = styled(MaterialButton).attrs({
+  variant: 'contained',
+  component: Link
+})`
+  &&{
+    margin-left: ${({ theme }) => theme.spacing(2)}px;
   }
 `
 
