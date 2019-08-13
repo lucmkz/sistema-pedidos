@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import { singularOrPlural } from 'utils'
 import { HOME } from 'routes'
 import styled from 'styled-components'
 import pizzaFlavours from 'fake-data/pizza-flavours'
+import {
+  singularOrPlural,
+  toMoney
+} from 'utils'
 import {
   Divider,
   Grid,
@@ -62,7 +65,7 @@ const ChoosePizzaFlavours = ({ location }) => {
                 <Divider />
 
                 <Typography>{pizza.name}</Typography>
-                <Typography variant='h5'>{pizza.values[id]}</Typography>
+                <Typography variant='h5'>{toMoney(pizza.values[id])}</Typography>
               </Label>
             </Card>
           </Grid>
