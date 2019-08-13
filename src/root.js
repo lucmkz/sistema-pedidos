@@ -1,5 +1,6 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
+import { ThemeProvider } from 'styled-components'
 import { HashRouter, Route } from 'react-router-dom'
 import { CssBaseline, createMuiTheme, MuiThemeProvider } from '@material-ui/core'
 import AuthProvider from './contexts/auth'
@@ -14,13 +15,15 @@ const theme = createMuiTheme({
 function Root () {
   return (
     <MuiThemeProvider theme={theme}>
-      <AuthProvider>
-        <CssBaseline />
+      <ThemeProvider theme={theme}>
+        <AuthProvider>
+          <CssBaseline />
 
-        <HashRouter>
-          <Route component={App} />
-        </HashRouter>
-      </AuthProvider>
+          <HashRouter>
+            <Route component={App} />
+          </HashRouter>
+        </AuthProvider>
+      </ThemeProvider>
     </MuiThemeProvider>
   )
 }
