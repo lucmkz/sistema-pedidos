@@ -2,7 +2,7 @@ import { Divider as MaterialDevider } from '@material-ui/core'
 import styled from 'styled-components'
 
 const Divider = styled(MaterialDevider)`
-  margin: 20px 0;
+  margin ${({ theme }) => theme.spacing(3)}px;
   width: 100%;
 `
 
