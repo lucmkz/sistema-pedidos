@@ -1,8 +1,12 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { HashRouter, Route } from 'react-router-dom'
-import { CssBaseline, createMuiTheme, MuiThemeProvider } from '@material-ui/core'
+import {
+  CssBaseline,
+  createMuiTheme,
+  MuiThemeProvider
+} from '@material-ui/core'
 import AuthProvider from './contexts/auth'
 import App from './app'
 
@@ -18,6 +22,7 @@ function Root () {
       <ThemeProvider theme={theme}>
         <AuthProvider>
           <CssBaseline />
+          <GlobalStyle />
 
           <HashRouter>
             <Route component={App} />
@@ -27,5 +32,13 @@ function Root () {
     </MuiThemeProvider>
   )
 }
+
+const GlobalStyle = createGlobalStyle`
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+`
 
 export default hot(module)(Root)
