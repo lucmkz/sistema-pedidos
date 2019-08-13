@@ -37,7 +37,7 @@ const GitHubButton = styled(Button).attrs({
   fullWidth: true
 })`
   && {
-    max-width: 420px;
+    max-width: 480px;
     font-size: ${({ theme }) => theme.typography.h5.fontSize};
     padding: ${({ theme }) => theme.spacing(2)}px;
     text-transform: none;

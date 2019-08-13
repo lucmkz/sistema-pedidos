@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core'
 
 const PizzasGrid = styled(Grid).attrs({
   container: true,
-  spacing: 4
+  spacing: 2
 })`
   padding: ${({ theme }) => theme.spacing(3)}px;;
 `

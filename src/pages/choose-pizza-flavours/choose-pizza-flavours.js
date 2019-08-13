@@ -8,12 +8,14 @@ import {
   toMoney
 } from 'utils'
 import {
+  Container,
   Divider,
   Grid,
   Card as MaterialCard,
   Typography
 } from '@material-ui/core'
 import {
+  Content,
   CardLink,
   H4,
   HeaderContent,
@@ -24,7 +26,7 @@ const ChoosePizzaFlavours = ({ location }) => {
   const [checkboxes, setCheckboxes] = useState(() => ({}))
 
   if (!location.state) {
-    return <Redirect to={HOME } />
+    return <Redirect to={HOME} />
   }
 
   const { flavours, id } = location.state
@@ -44,33 +46,42 @@ const ChoosePizzaFlavours = ({ location }) => {
 
   return (
     <>
-      <HeaderContent>
-        <H4>
-          Escolha até {flavours} {' '}
-          {singularOrPlural(flavours, 'sabor', 'sabores')}
-        </H4>
-      </HeaderContent>
+      <Content>
+        <HeaderContent>
+          <H4>
+            Escolha até {flavours} {' '}
+            {singularOrPlural(flavours, 'sabor', 'sabores')}
+          </H4>
+        </HeaderContent>
 
-      <PizzasGrid>
-        {pizzaFlavours.map((pizza) => (
-          <Grid item key={pizza.id} xs>
-            <Card checked={!!checkboxes[pizza.id]}>
-              <Label>
-                <Checkbox
-                  checked={!!checkboxes[pizza.id]}
-                  onChange={handleChangeCheckbox(pizza.id)}
-                />
-                <Img src={pizza.image} alt={pizza.name}/>
+        <PizzasGrid>
+          {pizzaFlavours.map((pizza) => (
+            <Grid item key={pizza.id} xs>
+              <Card checked={!!checkboxes[pizza.id]}>
+                <Label>
+                  <Checkbox
+                    checked={!!checkboxes[pizza.id]}
+                    onChange={handleChangeCheckbox(pizza.id)}
+                  />
+                  <Img src={pizza.image} alt={pizza.name} />
 
-                <Divider />
+                  <Divider />
 
-                <Typography>{pizza.name}</Typography>
-                <Typography variant='h5'>{toMoney(pizza.values[id])}</Typography>
-              </Label>
-            </Card>
-          </Grid>
-        ))}
-      </PizzasGrid>
+                  <Typography>{pizza.name}</Typography>
+                  <Typography variant='h5'>{toMoney(pizza.values[id])}</Typography>
+                </Label>
+              </Card>
+            </Grid>
+          ))}
+        </PizzasGrid>
+      </Content>
+
+      <Footer>
+        <Container>
+          Conteúdo
+        </Container>
+      </Footer>
+
     </>
   )
 }
@@ -97,6 +108,12 @@ const Card = styled(MaterialCard)`
 const Img = styled.img`
   width: 200px;
   height: 200px
+`
+
+const Footer = styled.footer`
+  box-shadow: 0 0 3px ${({ theme }) => theme.palette.grey[400]};
+  padding: ${({ theme }) => theme.spacing(3)}px;
+  width: 100%;
 `
 
 export default ChoosePizzaFlavours

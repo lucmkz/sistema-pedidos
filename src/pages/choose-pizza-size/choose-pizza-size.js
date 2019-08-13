@@ -9,7 +9,8 @@ import {
   Divider,
   H3,
   H4,
-  PizzasGrid
+  PizzasGrid,
+  Content
 } from 'ui'
 import {
   Grid,
@@ -21,7 +22,7 @@ const ChoosePizzaSize = () => {
   const { userInfo } = useContext(AuthContext)
 
   return (
-    <>
+    <Content>
       <Grid container direction='column' alignItems='center'>
         <H3>
           O que vai ser hoje {userInfo.user.firstName}?
@@ -57,7 +58,7 @@ const ChoosePizzaSize = () => {
           </Grid>
         ))}
       </PizzasGrid>
-    </>
+    </Content>
   )
 }
 
