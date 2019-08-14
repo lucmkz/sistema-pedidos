@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import pizzaSizes from 'fake-data/piza-size'
 import { singularOrPlural } from 'utils'
-import { AuthContext } from 'contexts/auth'
 import { CHOOSE_PIZZA_FLAVOURS } from 'routes'
+import { useAuth } from 'hooks'
 import {
   CardLink,
   Divider,
@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core'
 
 const ChoosePizzaSize = () => {
-  const { userInfo } = useContext(AuthContext)
+  const { userInfo } = useAuth()
 
   return (
     <Content>

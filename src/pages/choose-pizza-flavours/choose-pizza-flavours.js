@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react'
-import { AuthContext } from 'contexts/auth'
+import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { HOME, CHOOSE_PIZZA_QUANTITY } from 'routes'
 import styled from 'styled-components'
 import pizzaFlavours from 'fake-data/pizza-flavours'
+import { useAuth } from 'hooks'
 import {
   singularOrPlural,
   toMoney
@@ -26,7 +26,7 @@ import {
 
 const ChoosePizzaFlavours = ({ location }) => {
   const [checkboxes, setCheckboxes] = useState(() => ({}))
-  const { userInfo } = useContext(AuthContext)
+  const { userInfo } = useAuth()
 
   if (!location.state) {
     return <Redirect to={HOME} />
