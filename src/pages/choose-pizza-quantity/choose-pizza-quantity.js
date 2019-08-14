@@ -20,6 +20,7 @@ function ChoosePizzaQuantity () {
       <MainContent>
         <Input defaultValue='1' autoFocus />
       </MainContent>
+
     </Content>
   )
 }

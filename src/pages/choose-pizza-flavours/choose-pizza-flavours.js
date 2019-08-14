@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { HOME, CHOOSE_PIZZA_QUANTITY } from 'routes'
 import styled from 'styled-components'
 import pizzaFlavours from 'fake-data/pizza-flavours'
-import { useAuth } from 'hooks'
 import {
   singularOrPlural,
   toMoney
 } from 'utils'
 import {
-  Button as MaterialButton,
-  Container,
   Divider,
   Grid,
   Card as MaterialCard,
@@ -21,18 +18,18 @@ import {
   CardLink,
   H4,
   HeaderContent,
-  PizzasGrid
+  PizzasGrid,
+  Footer
 } from 'ui'
 
 const ChoosePizzaFlavours = ({ location }) => {
   const [checkboxes, setCheckboxes] = useState(() => ({}))
-  const { userInfo } = useAuth()
 
   if (!location.state) {
     return <Redirect to={HOME} />
   }
 
-  const { flavours, id, name, slices } = location.state
+  const { flavours, id } = location.state
 
   const handleChangeCheckbox = (pizzaId) => (e) => {
     if (
@@ -79,28 +76,17 @@ const ChoosePizzaFlavours = ({ location }) => {
         </PizzasGrid>
       </Content>
 
-      <Footer>
-        <Container>
-          <Grid container>
-            <OrderContainer>
-              <Typography>
-                <b>{userInfo.user.firstName}, seu pedido é</b>
-              </Typography>
-              <Typography>
-                Pizza <b>{name.toUpperCase()}</b> {'- '}
-                ({slices} {singularOrPlural(slices, 'fatia', 'fatias')}, {' '}
-                {flavours} {singularOrPlural(flavours, 'sabor', 'sabores')})
-              </Typography>
-            </OrderContainer>
-
-            <Grid item>
-              <Button to={HOME} >Mudar Tamanho</Button>
-              <Button to={CHOOSE_PIZZA_QUANTITY} color='primary'>Quantidade de Pizzas </Button>
-            </Grid>
-          </Grid>
-        </Container>
-      </Footer>
-
+      <Footer buttons={[
+        {
+          to: HOME,
+          children: 'Mudar tamanho'
+        },
+        {
+          to: CHOOSE_PIZZA_QUANTITY,
+          children: 'Quantas pizzas?',
+          color: 'primary'
+        }
+      ]}/>
     </>
   )
 }
@@ -129,29 +115,6 @@ const Card = styled(MaterialCard)`
 const Img = styled.img`
   width: 200px;
   height: 200px
-`
-
-const Footer = styled.footer`
-  box-shadow: 0 0 3px ${({ theme }) => theme.palette.grey[400]};
-  padding: ${({ theme }) => theme.spacing(3)}px;
-  width: 100%;
-`
-
-const OrderContainer = styled(Grid).attrs({
-  item: true
-})`
-  &&{
-    flex-grow: 1;
-  }
-`
-
-const Button = styled(MaterialButton).attrs({
-  variant: 'contained',
-  component: Link
-})`
-  &&{
-    margin-left: ${({ theme }) => theme.spacing(2)}px;
-  }
 `
 
 export default ChoosePizzaFlavours
