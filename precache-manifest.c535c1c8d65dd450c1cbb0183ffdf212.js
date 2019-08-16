@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "53e427fbbd491de7d89bd3e89378a1f4",
+    "revision": "61ecb410ff858a5f8e14531b39df87a6",
     "url": "/sistema-pedidos/index.html"
   },
   {
-    "revision": "3389ed7a577572ea269a",
+    "revision": "d822f60b180e01b1d7b4",
     "url": "/sistema-pedidos/static/css/main.34de6062.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sistema-pedidos/static/js/11.fd4c53d9.chunk.js"
   },
   {
-    "revision": "67da444d7bfcc6de8091",
-    "url": "/sistema-pedidos/static/js/4.8b14c241.chunk.js"
+    "revision": "99e27cd86ab76031f531",
+    "url": "/sistema-pedidos/static/js/4.4aabce2f.chunk.js"
   },
   {
     "revision": "b779ebe5ede90e2c9c39",
@@ -36,24 +36,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sistema-pedidos/static/js/6.397a9588.chunk.js"
   },
   {
-    "revision": "eb1da13bf3dd1a03303d",
-    "url": "/sistema-pedidos/static/js/7.e777ce64.chunk.js"
+    "revision": "05b87c65205d728176e9",
+    "url": "/sistema-pedidos/static/js/7.be720daf.chunk.js"
   },
   {
-    "revision": "c1c02933a233129480ec",
-    "url": "/sistema-pedidos/static/js/8.c510a2ce.chunk.js"
+    "revision": "4ced2999753e55f0463a",
+    "url": "/sistema-pedidos/static/js/8.f6a4d422.chunk.js"
   },
   {
-    "revision": "2c692f10b55c6f36f1e3",
-    "url": "/sistema-pedidos/static/js/9.270c3a86.chunk.js"
+    "revision": "1ed17b05622aa4ee55de",
+    "url": "/sistema-pedidos/static/js/9.460e66fd.chunk.js"
   },
   {
-    "revision": "3389ed7a577572ea269a",
-    "url": "/sistema-pedidos/static/js/main.4a62bf2b.chunk.js"
+    "revision": "d822f60b180e01b1d7b4",
+    "url": "/sistema-pedidos/static/js/main.b81edc4a.chunk.js"
   },
   {
-    "revision": "261b57e35b6f7fd48330",
-    "url": "/sistema-pedidos/static/js/runtime~main.22a8fc83.js"
+    "revision": "86bc18681fe3410bca8c",
+    "url": "/sistema-pedidos/static/js/runtime~main.646e1c2c.js"
   },
   {
     "revision": "462b499972a44670a011d97cb8e5d5f6",
