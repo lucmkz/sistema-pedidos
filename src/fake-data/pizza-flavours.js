@@ -22,7 +22,7 @@ export default [
   {
     id: '2',
     image: 'fake-data/images/pizza-portuguesa.jpg',
-    name: 'Frango',
+    name: 'Portuguesa',
     values: {
       0: 28,
       1: 38,
