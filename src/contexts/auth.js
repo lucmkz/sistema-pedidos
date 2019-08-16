@@ -1,10 +1,9 @@
 import React, { createContext, useCallback, useState } from 'react'
 import firebase from '../services/firebase'
-import t from 'prop-types'
 
-export const AuthContext = createContext()
+const AuthContext = createContext()
 
-function Auth ({ children }) {
+function AuthProvider ({ children }) {
   const [userInfo, setUserInfo] = useState({
     isUserLogedIn: false,
     user: null
@@ -33,8 +32,4 @@ function Auth ({ children }) {
   )
 }
 
-Auth.prototype = {
-  children: t.node.isRequired
-}
-
-export default Auth
+export { AuthProvider, AuthContext }
