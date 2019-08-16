@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom'
 import { Input as MaterialInput } from '@material-ui/core'
 import {
   Footer,
@@ -7,8 +8,13 @@ import {
   HeaderContent,
   Content
 } from 'ui'
+import { HOME } from 'routes'
 
-function ChoosePizzaQuantity () {
+function ChoosePizzaQuantity ({ location }) {
+  if (!location.state) {
+    return <Redirect to={HOME} />
+  }
+
   return (
     <>
       <Content>
