@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import {
   Footer,
@@ -12,9 +12,11 @@ import {
   Input as MaterialInput
 } from '@material-ui/core'
 import { HOME, CHECKOUT } from 'routes'
+import { useOrder } from 'hooks'
 
 function ChoosePizzaQuantity ({ location }) {
   const [quantity, setQuantity] = useState(1)
+  const { addPizzaToOrder } = useOrder()
 
   if (!location.state) {
     return <Redirect to={HOME} />
@@ -26,6 +28,14 @@ function ChoosePizzaQuantity ({ location }) {
     if (value >= 1) {
       setQuantity(e.target.value)
     }
+  }
+
+  function addPizza () {
+    addPizzaToOrder({
+      size: location.state.pizzaSize.id,
+      flavours: location.state.pizzaFlavours.map(f => f.id),
+      quantity
+    })
   }
 
   return (
@@ -41,10 +51,10 @@ function ChoosePizzaQuantity ({ location }) {
         <MainContent>
           <Input value={quantity} onChange={handleChange} autoFocus />
 
-          <Button variant='contained' color='secondary'>
+          <ButtonAddPizza onClick={addPizza}>
             Adicionar e<br />
             montar outra
-          </Button>
+          </ButtonAddPizza>
         </MainContent>
       </Content>
 
@@ -56,6 +66,7 @@ function ChoosePizzaQuantity ({ location }) {
 
           action: {
             to: CHECKOUT,
+            onClick: addPizza,
             children: 'Finalizar Compra',
             color: 'primary'
           }
@@ -65,6 +76,13 @@ function ChoosePizzaQuantity ({ location }) {
     </>
   )
 }
+
+const MainContent = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: ${({ theme }) => theme.spacing(2)}px;
+`
 
 const Input = styled(MaterialInput).attrs({
   type: 'number'
@@ -81,10 +99,14 @@ const Input = styled(MaterialInput).attrs({
   }
 `
 
-const MainContent = styled.div`
-flex-direction: column;
-  justify-content: center;
-  margin-top: ${({ theme }) => theme.spacing(2)}px;
+const ButtonAddPizza = styled(Button).attrs({
+  color: 'secondary',
+  component: Link,
+  variant: 'contained'
+})`
+  && {
+    text-align: center;
+  }
 `
 
 export default ChoosePizzaQuantity
