@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
+import styled from 'styled-components'
 import { Input as MaterialInput } from '@material-ui/core'
 import {
   Footer,
@@ -8,11 +8,21 @@ import {
   HeaderContent,
   Content
 } from 'ui'
-import { HOME } from 'routes'
+import { HOME, CHECKOUT } from 'routes'
 
 function ChoosePizzaQuantity ({ location }) {
+  const [quantity, setQuantity] = useState(1)
+
   if (!location.state) {
     return <Redirect to={HOME} />
+  }
+
+  function handleChange (e) {
+    const { value } = e.target
+
+    if (value >= 1) {
+      setQuantity(e.target.value)
+    }
   }
 
   return (
@@ -26,7 +36,7 @@ function ChoosePizzaQuantity ({ location }) {
         </HeaderContent>
 
         <MainContent>
-          <Input defaultValue='1' autoFocus />
+          <Input value={quantity} onChange={handleChange} autoFocus />
         </MainContent>
       </Content>
 
@@ -37,7 +47,7 @@ function ChoosePizzaQuantity ({ location }) {
           },
 
           action: {
-            to: '/',
+            to: CHECKOUT,
             children: 'Finalizar Compra',
             color: 'primary'
           }
