@@ -10,7 +10,7 @@ import {
   Typography
 } from '@material-ui/core'
 
-function Footer ({ buttons, location }) {
+function Footer ({ buttons, location, history }) {
   const { userInfo } = useAuth()
 
   const { pizzaSize, pizzaFlavours } = location.state
@@ -39,10 +39,20 @@ function Footer ({ buttons, location }) {
           </OrderContainer>
 
           <Grid item>
-            {buttons.map((button) => (
-              <Button key={button.to} {...button} />
-            ))}
+            <Button
+              {...buttons.back}
+              component='a'
+              onClick={(e) => {
+                e.preventDefault()
+                history.goBack()
+              }}
+            />
 
+            <Button
+              {...buttons.action}
+              component={Link}
+              color='primary'
+            />
           </Grid>
         </Grid>
       </Container>
@@ -65,8 +75,7 @@ const OrderContainer = styled(Grid).attrs({
 `
 
 const Button = styled(MaterialButton).attrs({
-  variant: 'contained',
-  component: Link
+  variant: 'contained'
 })`
   &&{
     margin-left: ${({ theme }) => theme.spacing(2)}px;
