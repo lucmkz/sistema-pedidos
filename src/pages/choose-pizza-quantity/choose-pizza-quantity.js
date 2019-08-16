@@ -51,7 +51,7 @@ function ChoosePizzaQuantity ({ location }) {
         <MainContent>
           <Input value={quantity} onChange={handleChange} autoFocus />
 
-          <ButtonAddPizza onClick={addPizza}>
+          <ButtonAddPizza to={HOME} onClick={addPizza}>
             Adicionar e<br />
             montar outra
           </ButtonAddPizza>
