@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
-import { Input as MaterialInput } from '@material-ui/core'
 import {
   Footer,
   H4,
   HeaderContent,
   Content
 } from 'ui'
+import {
+  Button,
+  Input as MaterialInput
+} from '@material-ui/core'
 import { HOME, CHECKOUT } from 'routes'
 
 function ChoosePizzaQuantity ({ location }) {
@@ -37,6 +40,11 @@ function ChoosePizzaQuantity ({ location }) {
 
         <MainContent>
           <Input value={quantity} onChange={handleChange} autoFocus />
+
+          <Button variant='contained' color='secondary'>
+            Adicionar e<br />
+            montar outra
+          </Button>
         </MainContent>
       </Content>
 
@@ -61,6 +69,10 @@ function ChoosePizzaQuantity ({ location }) {
 const Input = styled(MaterialInput).attrs({
   type: 'number'
 })`
+&& {
+  margin-bottom: ${({ theme }) => theme.spacing(3)}px;
+}
+
   & input {
     font-size: 80px;
     padding: 10px;
@@ -70,7 +82,7 @@ const Input = styled(MaterialInput).attrs({
 `
 
 const MainContent = styled.div`
-  display: flex
+flex-direction: column;
   justify-content: center;
   margin-top: ${({ theme }) => theme.spacing(2)}px;
 `
